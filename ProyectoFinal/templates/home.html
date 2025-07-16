@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="text-center">
+  <h1 class="mb-4">Bienvenido al Sistema de Gestión Hotelera</h1>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <a href="/rooms/" class="btn btn-outline-primary w-100 py-3">Habitaciones</a>
+    </div>
+    <div class="col">
+      <a href="/hotels/" class="btn btn-outline-primary w-100 py-3">Hoteles</a>
+    </div>
+    <div class="col">
+      <a href="/supplies/" class="btn btn-outline-primary w-100 py-3">Suministros</a>
+    </div>
+    <div class="col">
+      <a href="/activities/" class="btn btn-outline-primary w-100 py-3">Actividades</a>
+    </div>
+    <div class="col">
+      <a href="/employees/" class="btn btn-outline-primary w-100 py-3">Empleados</a>
+    </div>
+    <div class="col">
+      <a href="/customers/" class="btn btn-outline-primary w-100 py-3">Clientes</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

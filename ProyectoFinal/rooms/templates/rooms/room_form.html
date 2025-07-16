@@ -1,12 +1,32 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
+
 {% block content %}
 <div class="container mt-4">
   <h2 class="mb-4">{{ form.instance.pk|yesno:"Editar Habitación,Nueva Habitación" }}</h2>
   <form method="post">
     {% csrf_token %}
+
     <div class="mb-3">
-      {{ form.as_p }}
+      <label for="id_hotel" class="form-label">Hotel</label>
+      {{ form.hotel|add_class:"form-select" }}
     </div>
+
+    <div class="mb-3">
+      <label for="id_room_category" class="form-label">Categoría</label>
+      {{ form.room_category|add_class:"form-select" }}
+    </div>
+
+    <div class="mb-3">
+      <label for="id_beds_qty" class="form-label">Cantidad de Camas</label>
+      {{ form.beds_qty|add_class:"form-control" }}
+    </div>
+
+    <div class="mb-3">
+      <label for="id_price" class="form-label">Precio</label>
+      {{ form.price|add_class:"form-control" }}
+    </div>
+
     <button type="submit" class="btn btn-success">Guardar</button>
     <a href="{% url 'rooms:room_list' %}" class="btn btn-secondary">Cancelar</a>
   </form>

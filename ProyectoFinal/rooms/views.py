@@ -17,7 +17,7 @@ class RoomCreateView(CreateView):
 
 class RoomUpdateView(UpdateView):
     model = Room
-    fields = ['number', 'room_type', 'price']
+    fields = ['hotel', 'room_category', 'beds_qty', 'price']
     template_name = 'rooms/room_form.html'
     success_url = reverse_lazy('rooms:room_list')
 
