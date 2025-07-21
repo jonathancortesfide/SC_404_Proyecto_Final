@@ -444,8 +444,8 @@ BEGIN
             ERROR_MESSAGE() AS ErrorMessage;
     END CATCH
 END
-
-
+	    
+--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 CREATE OR REPLACE PROCEDURE [dbo].[SP_GN_UpdateRoom]
     @RoomId INT,
     @HotelId INT = NULL,
@@ -470,7 +470,7 @@ BEGIN
     END CATCH
 END
 
-
+--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 CREATE OR REPLACE PROCEDURE [dbo].[SP_GN_DeleteRoom]
     @RoomId INT
 AS
@@ -486,7 +486,7 @@ BEGIN
     END CATCH
 END
 
-
+--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 CREATE OR REPLACE PROCEDURE [dbo].[SP_GN_AddActivity]
     @HotelId INT,
     @ActivityCategoryId INT,
@@ -512,7 +512,7 @@ BEGIN
     END CATCH
 END
 
-
+--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 CREATE OR REPLACE PROCEDURE [dbo].[SP_GN_UpdateActivity]
     @ActivityId INT,
     @HotelId INT = NULL,
@@ -535,7 +535,7 @@ BEGIN
     END CATCH
 END
 
-
+--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 CREATE OR REPLACE PROCEDURE [dbo].[SP_GN_DeleteActivity]
     @ActivityId INT
 AS
