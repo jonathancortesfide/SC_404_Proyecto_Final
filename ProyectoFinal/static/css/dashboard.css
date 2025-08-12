@@ -1,0 +1,13 @@
+:root{ --sidebar-bg:#f8f9fb; }
+html,body,.app{height:100%;}
+.sidebar{ width:260px; min-height:100vh; background:var(--sidebar-bg); border-right:1px solid #e9ecef; }
+.sidebar .nav-link{color:#495057; border-radius:10px; padding:.55rem .75rem;}
+.sidebar .nav-link:hover{background:#e9ecef;}
+.sidebar .nav-link.active{background:#0d6efd; color:#fff;}
+.content{background:#f5f6fa;}
+.user-card .avatar{width:48px; height:48px;}
+.card-table{border-radius:18px; overflow:hidden; border:0; box-shadow:0 8px 24px rgba(0,0,0,.06);}
+.dt-container .row{align-items:center;}
+.dataTables_length select{margin:0 .25rem;}
+.dataTables_filter{display:none;}
+.table thead th{white-space:nowrap;}
