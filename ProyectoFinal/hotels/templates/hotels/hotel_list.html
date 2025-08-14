@@ -2,15 +2,15 @@
 {% block content %}
 <div class="container mt-4">
   <h2>Hoteles</h2>
-  <a href="{% url 'hotel_create' %}" class="btn btn-primary mb-3">Agregar Hotel</a>
+  <a href="{% url 'hotels:hotel_create' %}" class="btn btn-primary mb-3">Agregar Hotel</a>
   <ul class="list-group">
     {% for hotel in object_list %}
       <li class="list-group-item d-flex justify-content-between align-items-center">
         <span>{{ hotel.name }}</span>
         <div>
-          <a href="{% url 'hotel_detail' hotel.id %}" class="btn btn-info btn-sm">Ver</a>
-          <a href="{% url 'hotel_update' hotel.id %}" class="btn btn-warning btn-sm">Editar</a>
-          <a href="{% url 'hotel_delete' hotel.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+          <a href="{% url 'hotels:hotel_detail' hotel.id %}" class="btn btn-info btn-sm">Ver</a>
+          <a href="{% url 'hotels:hotel_update' hotel.id %}" class="btn btn-warning btn-sm">Editar</a>
+          <a href="{% url 'hotels:hotel_delete' hotel.id %}" class="btn btn-danger btn-sm">Eliminar</a>
         </div>
       </li>
     {% empty %}

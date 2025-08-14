@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'bedcategories',
     'widget_tweaks',
     'audit',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

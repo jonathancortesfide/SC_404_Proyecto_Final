@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Habitaciones{% endblock %}
+{% block sb_rooms %}active{% endblock %}
+
+{% block content %}
+<nav class="mb-3 text-muted">Panel / <span class="fw-semibold">Listar Habitaciones</span></nav>
+
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <h2 class="mb-0 fw-bold">Lista de Habitaciones</h2>
+  <a href="{% url 'rooms:room_create' %}" class="btn btn-primary">CREAR NUEVA HABITACIÓN</a>
+</div>
+
+<div class="card card-table">
+  <div class="card-header bg-white">
+    <h5 class="mb-0">Habitaciones</h5>
+  </div>
+  <div class="card-body">
+    <table id="tablaHabitaciones" class="table table-striped table-hover w-100">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Hotel</th>
+          <th>Categoría</th>
+          <th>Cantidad de Camas</th>
+          <th>Precio</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for room in rooms %}
+        <tr>
+          <td>{{ room.id }}</td>
+          <td>{{ room.hotel.name }}</td>
+          <td>{{ room.room_category.name }}</td>
+          <td>{{ room.beds_qty }}</td>
+          <td>₡{{ room.price }}</td>
+          <td class="text-center">
+            <a href="{% url 'rooms:room_update' room.id %}" class="btn btn-sm btn-outline-secondary">
+              <i class="bi bi-pencil"></i>
+            </a>
+            <form action="{% url 'rooms:room_delete' room.id %}" method="post" class="d-inline">
+              {% csrf_token %}
+              <button class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Eliminar habitación?')">
+                <i class="bi bi-trash"></i>
+              </button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+<script>
+$(function(){
+  const dt = $('#tablaHabitaciones').DataTable({
+    pageLength: 10,
+    lengthMenu: [10,25,50,100],
+    language: { url: "https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json" },
+    columnDefs: [
+      { targets: -1, orderable:false, searchable:false, width: '110px' }
+    ]
+  });
+  window._activeDataTable = dt; // conecta el buscador de la topbar
+});
+</script>
+{% endblock %}
