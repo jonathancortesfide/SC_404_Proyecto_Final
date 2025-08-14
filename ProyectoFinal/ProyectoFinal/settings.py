@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'statuscatalogs',
     'bedcategories',
     'widget_tweaks',
+    'audit',
     'django.contrib.humanize',
 ]
 
