@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>{{ form.instance.pk|yesno:"Edit Reservation,New Reservation" }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="id_room">Room</label>
+      {{ form.room|add_class:"form-select" }}
+    </div>
+    <div class="mb-3">
+      <label for="id_customer">Customer</label>
+      {{ form.customer|add_class:"form-select" }}
+    </div>
+    <div class="mb-3">
+      <label for="id_check_in_date">Check-In Date</label>
+      {{ form.check_in_date|add_class:"form-control" }}
+    </div>
+    <div class="mb-3">
+      <label for="id_check_out_date">Check-Out Date</label>
+      {{ form.check_out_date|add_class:"form-control" }}
+    </div>
+    <div class="mb-3">
+      <label for="id_price">Price</label>
+      {{ form.price|add_class:"form-control" }}
+    </div>
+    <div class="mb-3">
+      <label for="id_comment">Comment</label>
+      {{ form.comment|add_class:"form-control" }}
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="{% url 'reservations:roomreservation_list' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}

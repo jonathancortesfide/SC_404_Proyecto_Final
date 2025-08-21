@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% block title %}Employees{% endblock %}
+{% block sb_employees %}active{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+{% endblock %}
+
+{% block content %}
+<nav class="mb-3 text-muted">
+  <span>Panel</span> / <span class="fw-semibold">Listar Empleados</span>
+</nav>
+
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <a href="{% url 'employees:employee_create' %}" class="btn btn-primary">AGREGAR EMPLEADO</a>
+</div>
+
+<div class="card card-table">
+  <div class="card-header bg-white">
+    <h5 class="mb-0">Empleados</h5>
+  </div>
+  <div class="card-body">
+    <table id="tablaEmployees" class="table table-striped table-hover w-100 nowrap">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Hotel</th>
+          <th>Persona</th>
+          <th>Rol</th>
+          <th>Inicio</th>
+          <th>Salario</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for employee in employees %}
+        <tr>
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.hotel_name }}</td>
+          <td>{{ employee.person_name }}</td>
+          <td>{{ employee.role_name }}</td>
+          <td>{{ employee.start_date|date:"d/m/Y" }}</td>
+          <td>₡{{ employee.salary|floatformat:2 }}</td>
+          <td class="text-center">
+            <a href="{% url 'employees:employee_update' employee.id %}" class="btn btn-sm btn-outline-secondary">
+              <i class="bi bi-pencil"></i>
+            </a>
+            <a href="{% url 'employees:employee_delete' employee.id %}" class="btn btn-sm btn-outline-danger">
+              <i class="bi bi-trash"></i>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+<script>
+$(function(){
+  $('#tablaEmployees').DataTable({
+    responsive: true,
+    pageLength: 10,
+    lengthMenu: [10,25,50,100],
+    language: { url: "https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json" },
+    columnDefs: [{ targets: -1, orderable:false, searchable:false, className:'text-center', width:'120px' }]
+  });
+});
+</script>
+{% endblock %}

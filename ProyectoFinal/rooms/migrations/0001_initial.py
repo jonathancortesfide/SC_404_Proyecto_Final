@@ -41,7 +41,7 @@ class Migration(migrations.Migration):
             name='Room',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('beds_qty', models.IntegerField()),
+                ('bedsqty', models.IntegerField()),
                 ('price', models.DecimalField(decimal_places=2, max_digits=10)),
                 ('hotel', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='hotels.hotel')),
                 ('room_category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='rooms.roomcategory')),

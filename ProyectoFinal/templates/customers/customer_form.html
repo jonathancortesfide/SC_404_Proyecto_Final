@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4">
+    {{ form.instance.pk|yesno:"Editar Cliente,Nuevo Cliente" }}
+  </h2>
+  <form method="post">
+    {% csrf_token %}
+
+    <!-- Person -->
+    <div class="mb-3">
+      <label for="id_person" class="form-label">Persona</label>
+      {{ form.person|add_class:"form-select" }}
+    </div>
+
+    <!-- Reservation Count -->
+    <div class="mb-3">
+      <label for="id_reservation_count" class="form-label">Cantidad de Reservaciones</label>
+      {{ form.reservation_count|add_class:"form-control" }}
+    </div>
+
+    <!-- Buttons -->
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a href="{% url 'customers:customer_list' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

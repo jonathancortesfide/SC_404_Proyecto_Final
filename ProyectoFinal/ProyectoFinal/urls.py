@@ -9,6 +9,8 @@ urlpatterns = [
     path('hotels/', include('hotels.urls', namespace='hotels')),
     path('supplies/', include('supplies.urls', namespace='supplies')),
     path('activities/', include('activities.urls', namespace='activities')),
+    path('reservations/', include('reservations.urls', namespace='reservations')),
     path('employees/', include('employees.urls', namespace='employees')),
-    path('clients/', include('users.urls', namespace='clients')),   # “Clientes”
+    path('clients/', include('users.urls', namespace='clients')),
+    path('customers/', include('customers.urls', namespace='customers')),
 ]

@@ -1,21 +1,68 @@
 {% extends "base.html" %}
+{% block title %}Hoteles{% endblock %}
+{% block sb_hotels %}active{% endblock %}
+
 {% block content %}
-<div class="container mt-4">
-  <h2>Hoteles</h2>
-  <a href="{% url 'hotels:hotel_create' %}" class="btn btn-primary mb-3">Agregar Hotel</a>
-  <ul class="list-group">
-    {% for hotel in object_list %}
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <span>{{ hotel.name }}</span>
-        <div>
-          <a href="{% url 'hotels:hotel_detail' hotel.id %}" class="btn btn-info btn-sm">Ver</a>
-          <a href="{% url 'hotels:hotel_update' hotel.id %}" class="btn btn-warning btn-sm">Editar</a>
-          <a href="{% url 'hotels:hotel_delete' hotel.id %}" class="btn btn-danger btn-sm">Eliminar</a>
-        </div>
-      </li>
-    {% empty %}
-      <li class="list-group-item">No hay hoteles disponibles.</li>
-    {% endfor %}
-  </ul>
+<nav class="mb-3 text-muted">Panel / <span class="fw-semibold">Listar Hoteles</span></nav>
+
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <!-- <h2 class="mb-0 fw-bold">Lista de Hoteles</h2> -->
+  <a href="{% url 'hotels:hotel_create' %}" class="btn btn-primary">CREAR NUEVO HOTEL</a>
 </div>
+
+<div class="card card-table">
+  <div class="card-header bg-white">
+    <h5 class="mb-0">Hoteles</h5>
+  </div>
+  <div class="card-body">
+    <table id="tablaHoteles" class="table table-striped table-hover w-100">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for hotel in object_list %}
+        <tr>
+          <td>{{ hotel.id }}</td>
+          <td>{{ hotel.name }}</td>
+          <td>{{ hotel.description }}</td>
+          <td class="text-center">
+            <a href="{% url 'hotels:hotel_update' hotel.id %}" class="btn btn-sm btn-outline-secondary">
+              <i class="bi bi-pencil"></i>
+            </a>
+            <a href="{% url 'hotels:hotel_delete' hotel.id %}" class="btn btn-sm btn-outline-danger">
+              <i class="bi bi-trash"></i>
+            </a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="4" class="text-center">No hay hoteles disponibles.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+<script>
+$(function(){
+  const dt = $('#tablaHoteles').DataTable({
+    pageLength: 10,
+    lengthMenu: [10,25,50,100],
+    language: { url: "https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json" },
+    columnDefs: [
+      { targets: -1, orderable:false, searchable:false, width: '130px' }
+    ]
+  });
+  window._activeDataTable = dt; // conecta el buscador de la topbar
+});
+</script>
 {% endblock %}

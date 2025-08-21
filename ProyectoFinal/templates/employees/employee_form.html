@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>{{ form.instance.pk|yesno:"Editar Empleado,Nuevo Empleado" }}</h2>
+  <form method="post">
+    {% csrf_token %}
+
+    <!-- Hotel -->
+    <div class="mb-3">
+      <label for="id_hotel" class="form-label">Hotel</label>
+      {{ form.hotel|add_class:"form-select" }}
+    </div>
+
+    <!-- Person -->
+    <div class="mb-3">
+      <label for="id_person" class="form-label">Persona</label>
+      {{ form.person|add_class:"form-select" }}
+    </div>
+
+    <!-- Role -->
+    <div class="mb-3">
+      <label for="id_role" class="form-label">Rol</label>
+      {{ form.role|add_class:"form-select" }}
+    </div>
+
+    <!-- Start Date -->
+    <div class="mb-3">
+      <label for="id_start_date" class="form-label">Fecha de Inicio</label>
+      {{ form.start_date|add_class:"form-control" }}
+    </div>
+
+    <!-- Salary -->
+    <div class="mb-3">
+      <label for="id_salary" class="form-label">Salario</label>
+      {{ form.salary|add_class:"form-control" }}
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a href="{% url 'employees:employee_list' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

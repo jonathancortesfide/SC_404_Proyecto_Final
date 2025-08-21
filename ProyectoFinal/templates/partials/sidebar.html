@@ -1,11 +1,15 @@
 <aside class="sidebar d-flex flex-column p-3">
   <a href="{% url 'home' %}" class="d-flex align-items-center mb-3 text-decoration-none">
-    <i class="bi bi-hospital fs-3 me-2"></i>
+    <i class="bi bi-sun fs-3 me-2"></i>
     <span class="fs-5 fw-semibold">Paraíso del Sol</span>
   </a>
   <hr>
   <ul class="nav nav-pills flex-column mb-auto gap-1">
     <!-- Bloques por sección -->
+     <li class="mt-2 small text-uppercase text-muted px-2">Reservaciones</li>
+    <li><a href="{% url 'reservations:roomreservation_list' %}" class="nav-link {% block sb_reservations %}{% endblock %}">
+      <i class="bi bi-person-badge me-2"></i>Listar Reservaciones</a></li>
+
     <li class="mt-2 small text-uppercase text-muted px-2">Habitaciones</li>
     <li><a href="{% url 'rooms:room_list' %}" class="nav-link {% block sb_rooms %}{% endblock %}">
       <i class="bi bi-door-open me-2"></i>Listar Habitaciones</a></li>
@@ -27,7 +31,7 @@
       <i class="bi bi-person-badge me-2"></i>Listar Empleados</a></li>
 
     <li class="mt-2 small text-uppercase text-muted px-2">Clientes</li>
-    <li><a href="{% url 'users:user_list' %}" class="nav-link {% block sb_clients %}{% endblock %}">
+    <li><a href="{% url 'customers:customer_list' %}" class="nav-link {% block sb_clients %}{% endblock %}">
       <i class="bi bi-people me-2"></i>Listar Clientes</a></li>
   </ul>
 </aside>

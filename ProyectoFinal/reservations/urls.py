@@ -1,10 +1,16 @@
 from django.urls import path
-from . import views
+from .views import (
+    RoomReservationListView,
+    RoomReservationCreateView,
+    RoomReservationUpdateView,
+    RoomReservationDeleteView,
+)
 
-app_name = "reservations"
+app_name = 'reservations'
+
 urlpatterns = [
-    path('', views.reservation_list, name='reservation_list'),
-    path('new/', views.reservation_create, name='reservation_create'),
-    path('<int:pk>/edit/', views.reservation_update, name='reservation_update'),
-    path('<int:pk>/delete/', views.reservation_delete, name='reservation_delete'),
+    path('', RoomReservationListView.as_view(), name='roomreservation_list'),
+    path('add/', RoomReservationCreateView.as_view(), name='roomreservation_create'),
+    path('<int:pk>/edit/', RoomReservationUpdateView.as_view(), name='roomreservation_update'),
+    path('<int:pk>/delete/', RoomReservationDeleteView.as_view(), name='roomreservation_delete'),
 ]

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Confirmar eliminación</h2>
+  <p>¿Está seguro de que desea eliminar la actividad 
+     <strong>{{ object.activity_category.name }} @ {{ object.hotel.name }}</strong>?
+  </p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+    <a href="{% url 'activities:activity_list' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}
